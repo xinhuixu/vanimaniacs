@@ -1,0 +1,51 @@
+* { margin: 0; padding: 0; }
+   
+#canv {
+}
+
+@font-face {
+    font-family: 'ArcadeClassic';
+    src: url('ArcadeClassic.ttf');
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.b {
+    background-color: #83F52C;
+    color: black;
+    border: 1px solid #83F53C;
+    border-radius: 2px;
+    font-family: 'ArcadeClassic';
+    font-size: 2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.b:hover {
+    background-color: green;
+    border: 1px solid green;
+}
+
+#b_wrap {
+    position: absolute;
+    right: 2em;
+    top: 1em;
+}
+
+#audio_wrap {
+    position: absolute;
+    left: 2.5em;
+    top: 1.5em;
+}
+
+#audio_text {
+    font-family: 'ArcadeClassic';
+    font-size: 2em;
+    color: #83F52C;
+}
