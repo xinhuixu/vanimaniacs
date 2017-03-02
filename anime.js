@@ -13,7 +13,7 @@ var reset = function(e){
     while (svg.lastChild) {
 	svg.removeChild(svg.lastChild);
     }
-    console.log("reset");
+    //console.log("reset");
 }
 
 var stop = function(e) {
@@ -33,8 +33,11 @@ var hypnosis = function(e) {
  
     var circle = function() {
 	reset();
+	if (r % 5 == 0) {
+	    var color = 'rgb(' + Math.floor(Math.random() * 256) + ',' +Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+	    c.setAttribute("fill",color);
+	}
 	svg.appendChild(c);
-	r += 1;
 	c.setAttribute("r", r);
 	if (r >= 0 && r <= 0.15*w) {
             if (grow){
@@ -43,7 +46,7 @@ var hypnosis = function(e) {
 		r -= 1;
 	    }
 	}
-	if (r > 0.15*w) {
+	if (r >= 0.15*w) {
 	    r -= 1;
 	    grow = false;
 	    console.log('grow = false');
@@ -51,9 +54,8 @@ var hypnosis = function(e) {
 	if (r == 0) {
 	    grow = true;
 	}
-	console.log(r);
+	//console.log(r);
 	rid = window.requestAnimationFrame(circle);
-
     }
     circle();
 }
