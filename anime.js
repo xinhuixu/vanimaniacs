@@ -21,6 +21,11 @@ var stop = function(e) {
     console.log("stop");
 }
 
+var rand_color = function(){
+    var color = 'rgb(' + Math.floor(Math.random() * 256) + ',' +Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+    return color;
+}
+
 var hypnosis = function(e) {
     window.cancelAnimationFrame(rid);
     var r = 0;
@@ -60,7 +65,39 @@ var hypnosis = function(e) {
     circle();
 }
 
-var dvd = function(e){}
+var dvd = function(e){
+    window.cancelAnimationFrame(rid);
+    var rh = 100;
+    var rw = 200;
+    var rx = Math.floor(Math.random() * (w - rw));
+    var ry = Math.floor(Math.random() * (h - rh));
+    var dx = 2.5;
+    var dy = 2.5;
+    var color = rand_color();
+    var rect = document.createElementNS(NS, "rect");
+    rect.setAttribute("width", rw);
+    rect.setAttribute("height", rh);
+    rect.setAttribute("style", "fill:"+color+";");
+    
+    var drift = function() {
+	reset();
+	svg.appendChild(rect);
+	rect.setAttribute("x", rx);
+	rect.setAttribute("y", ry);
+	if (rx < 0 || rx > (w-rw)) {
+	    dx = -1 * dx;
+	    rect.setAttribute("style","fill:"+rand_color());
+	}
+	if (ry < 0 || ry > (h-rh)) {
+	    dy = -1 * dy;
+	    rect.setAttribute("style","fill:"+rand_color());
+	}
+	rx += dx;
+	ry += dy;
+	rid = window.requestAnimationFrame(drift);
+    }
+    drift();
+}
 
 b_circle.addEventListener("click", hypnosis);
 b_dvd.addEventListener("click", dvd);
